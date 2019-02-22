@@ -58,6 +58,36 @@ class SortAlgo{
 
 	}
 
+
+	/**
+	 * 选择排序
+	 * @param  [type] $arr [description]
+	 * @return [type]      [description]
+	 */
+	public function selectSort($arr)
+	{
+		$len = count($arr);
+
+		for($i = 0; $i < $len; $i++){
+			$min = $i;
+			for($j = $i+1; $j < $len; $j++){
+				if($arr[$j] < $arr[$min]){
+					$min = $j;
+				}
+			}
+
+			if($min != $i){
+				$tmp = $arr[$i];
+				$arr[$i] = $arr[$min];
+				$arr[$min] = $tmp;
+			}
+
+		}
+	
+		return $arr;
+
+	}
+
 }
 
 
@@ -66,3 +96,5 @@ $arr = [20, 10, 5, 30, 25, 50, 34, 44, 29];
 var_dump(implode($sortAlgo->bubbleSort($arr), ','));
 
 var_dump(implode($sortAlgo->insertSort($arr), ','));
+
+var_dump(implode($sortAlgo->selectSort($arr), ','));
